@@ -1,7 +1,7 @@
 transformers
 torch
 python-dotenv
-sentence-piece
+sentencepiece
 protobuf==3.20.0
 requests
 pandas
