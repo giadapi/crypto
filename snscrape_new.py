@@ -1,4 +1,4 @@
-import snscrape.modules.twitter as sntwitter
+import snstwitter
 import pandas as pd
 # For sending GET requests from the API
 import requests

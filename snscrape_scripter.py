@@ -118,4 +118,4 @@ def snscrape(num_tweets=100,start_date='2023-03-05T06:00:00.000Z',end_date='2023
         return
 
 if __name__ == "__main__":
-    snscrape(num_tweets=100,start_date='2023-03-07T06:00:00.000Z',end_date='2022-07-01T06:00:00.000Z', hour_delta=8,min_gap=10,filename='run1.csv',make_csv=True)
+    snscrape(num_tweets=100,start_date='2023-03-07T06:00:00',end_date='2023-03-08T06:00:00', hour_delta=8,min_gap=10,filename='run1.csv',make_csv=True)
