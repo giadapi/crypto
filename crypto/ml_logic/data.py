@@ -27,4 +27,4 @@ def load_historic_data(symbol, start_date_str, end_date_str, period, interval):
         print(f'Error loading stock data for + {symbol}')
         return None
 
-#Part B - Download the twitter data from twitter
+#Part B - Download the twitter data from twitter API
