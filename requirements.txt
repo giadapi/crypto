@@ -7,3 +7,4 @@ requests
 pandas
 yfinance
 scipy
+snscrape
