@@ -86,11 +86,23 @@ def append_to_csv(tweet, fileName):
 
     return
 
-def snscrape(num_tweets=100,start_date='2023-03-05T06:00:00.000Z',end_date='2023-03-06T06:00:00.000Z', hour_delta=8,min_gap=10,filename='run1.csv',users_name=['ElonMusk'],make_csv=True):
+def get_usernames(file_csv='raw_data/Usernames - Sheet1.csv'):
+    with open(file_csv, newline='') as f:
+        reader = csv.reader(f)
+        data = list(reader)
+        experts = []
+        for i in range(len(data)):
+            experts.append(data[i][0][1:])
+        return experts
+
+
+
+
+def snscrape_expert(start_date='2023-03-05T06:00:00.000Z',end_date='2023-03-06T06:00:00.000Z',filename='raw_data/experts.csv',users_name=['ElonMusk'],make_csv=True):
 
     # Creating list to append tweet data to
 #     start_list, end_list = timedeltas2(start=start_date,end=end_date,hour_delta=hour_delta,min_gap=min_gap)
-    start_list, end_list = timedeltas(start=start_date,last=end_date,hour_delta=hour_delta,min_gap=min_gap)
+    # start_list, end_list = timedeltas(start=start_date,last=end_date,hour_delta=hour_delta,min_gap=min_gap)
 
 #     print(start_list)
 
@@ -102,18 +114,11 @@ def snscrape(num_tweets=100,start_date='2023-03-05T06:00:00.000Z',end_date='2023
     csvWriter.writerow(['datetime', 'username', 'text'])
     csvFile.close()
 
-    users_name = ['bbcmundo','nytimes']
     for n, k in enumerate(users_name):
+        # for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'#bitcoin from:{k} since:{start_list[i]} until:{end_list[i]} lang:en').get_items()):
+        for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'user:{k} since:{start_date} lang:en').get_items()):
+            append_to_csv(tweet, filename)
 
-    # Using TwitterSearchScraper to scrape data and append tweets to list
-        for i in range(len(start_list)):
-            for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'#bitcoin from:{k} since:{start_list[i]} until:{end_list[i]} lang:en').get_items()):
-                if i>num_tweets:
-                    break
-                append_to_csv(tweet, filename)
-
-    # Creating a dataframe from the tweets list above
-#     tweets_df2 = pd.DataFrame(tweets_list2, columns=['Datetime', 'Tweet Id', 'Text', 'Username'])
 
     if make_csv:
         return pd.read_csv(filename)
@@ -121,4 +126,5 @@ def snscrape(num_tweets=100,start_date='2023-03-05T06:00:00.000Z',end_date='2023
         return
 
 if __name__ == "__main__":
-    snscrape(num_tweets=149,start_date='2022-12-24T06:00:00',end_date=None, hour_delta=8,min_gap=10,filename='24-12-22_to_08-03-23.csv',users_name=['ElonMusk'],make_csv=True)
+    experts = get_usernames(file_csv='raw_data/Usernames - Sheet1.csv')
+    snscrape_expert(start_date='2022-01-01_06:00:00_UTC',end_date='2023-03-06_06:00:00_UTC',filename='raw_data/experts.csv',users_name=experts,make_csv=False)
