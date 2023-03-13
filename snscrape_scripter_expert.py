@@ -113,11 +113,19 @@ def snscrape_expert(start_date='2023-03-05T06:00:00.000Z',end_date='2023-03-06T0
     #Create headers for the data you want to save, in this example, we only want save these columns in our dataset
     csvWriter.writerow(['datetime', 'username', 'text'])
     csvFile.close()
+    if end_date==None:
 
-    for n, k in enumerate(users_name):
-        # for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'#bitcoin from:{k} since:{start_list[i]} until:{end_list[i]} lang:en').get_items()):
-        for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'user:{k} since:{start_date} lang:en').get_items()):
-            append_to_csv(tweet, filename)
+        for n, k in enumerate(users_name):
+            # for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'#bitcoin from:{k} since:{start_list[i]} until:{end_list[i]} lang:en').get_items()):
+            for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'from:{users_name[n]} since:{start_date} lang:en').get_items()):
+                append_to_csv(tweet, filename)
+
+    else:
+        for n, k in enumerate(users_name):
+            # for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'#bitcoin from:{k} since:{start_list[i]} until:{end_list[i]} lang:en').get_items()):
+            for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'from:{users_name[n]} since:{start_date} until:{end_date} lang:en').get_items()):
+                append_to_csv(tweet, filename)
+
 
 
     if make_csv:
@@ -127,4 +135,4 @@ def snscrape_expert(start_date='2023-03-05T06:00:00.000Z',end_date='2023-03-06T0
 
 if __name__ == "__main__":
     experts = get_usernames(file_csv='raw_data/Usernames - Sheet1.csv')
-    snscrape_expert(start_date='2022-01-01_06:00:00_UTC',end_date='2023-03-06_06:00:00_UTC',filename='raw_data/experts.csv',users_name=experts,make_csv=False)
+    snscrape_expert(start_date='2022-02-01_06:00:00_UTC',end_date=None,filename='raw_data/experts.csv',users_name=experts,make_csv=False)
