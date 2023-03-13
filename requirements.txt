@@ -8,3 +8,4 @@ pandas
 yfinance
 scipy
 snscrape
+csv

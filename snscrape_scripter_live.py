@@ -133,6 +133,42 @@ def snscrape_expert(start_date='2023-03-05T06:00:00.000Z',end_date='2023-03-06T0
     else:
         return
 
+def snscrape(num_tweets=100,start_date='2023-03-05T06:00:00.000Z',end_date='2023-03-06T06:00:00.000Z', hour_delta=8,min_gap=10,filename='run1.csv',make_csv=True):
+
+    # Creating list to append tweet data to
+#     start_list, end_list = timedeltas2(start=start_date,end=end_date,hour_delta=hour_delta,min_gap=min_gap)
+    start_list, end_list = timedeltas(start=start_date,last=end_date,hour_delta=hour_delta,min_gap=min_gap)
+
+#     print(start_list)
+
+    # Create file
+    csvFile = open(filename, "a", newline="", encoding='utf-8')
+    csvWriter = csv.writer(csvFile)
+
+    #Create headers for the data you want to save, in this example, we only want save these columns in our dataset
+    csvWriter.writerow(['datetime', 'username', 'text'])
+    csvFile.close()
+
+    # Using TwitterSearchScraper to scrape data and append tweets to list
+    for i in range(len(start_list)):
+        for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'#bitcoin since:{start_list[i]} until:{end_list[i]} lang:en').get_items()):
+            if i>num_tweets:
+                break
+            append_to_csv(tweet, filename)
+
+    # Creating a dataframe from the tweets list above
+#     tweets_df2 = pd.DataFrame(tweets_list2, columns=['Datetime', 'Tweet Id', 'Text', 'Username'])
+
+    if make_csv:
+        return pd.read_csv(filename)
+    else:
+        return
+
+
+
+
+
 if __name__ == "__main__":
     experts = get_usernames(file_csv='raw_data/Usernames - Sheet1.csv')
-    snscrape_expert(start_date='2022-02-01_06:00:00_UTC',end_date=None,filename='raw_data/experts_22-02-01_to_23-03-13.csv',users_name=experts,make_csv=False)
+    snscrape_expert(start_date='2022-02-01_06:00:00_UTC',end_date=None,filename='raw_data/experts_22-02-01_to_23-03-13.csv',users_name=experts,make_csv=True)
+    snscrape(num_tweets=149,start_date='2022-12-24T06:00:00',end_date=None, hour_delta=8,min_gap=10,filename='raw_data/24-12-22_to_08-03-23.csv',make_csv=True)
