@@ -1,6 +1,8 @@
 import pandas as pd
 
-def filter(df):
+
+
+def filtering(df):
     key_words = [
     'Market',
     'Short',
@@ -22,10 +24,13 @@ def filter(df):
     'dollar',
     'scaling',
     'scale']
+
+
     x= ''
     for i in key_words:
         x += '|'+ i
     x=x[1:]
+
     refined_data_mask = df.iloc[:,-1].str.contains(x)
     refined_data = df[refined_data_mask]
     return refined_data
