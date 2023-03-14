@@ -9,7 +9,7 @@ import datetime
 import pandas as pd
 from datetime import datetime
 # from model import preprocess, run_model, remove_spam
-from crypto.snsscrape_scripter_live import snscrape_expert, snscrape, get_usernames
+from snscrape_scripter_live import snscrape_expert, snscrape, get_usernames
 from data import update_prices
 
 def remove_spam(data):
@@ -79,23 +79,26 @@ def run_model(data):
 
 
 
-def update_dataframe(data_path = '../raw_data/cleaned_tweets_without_dupes_120323.csv', num_tweets=149):
-    data = pd.read_csv(data_path)
+def update_dataframe(data_path = '../../raw_data/cleaned_tweets_without_dupes_120323.csv', num_tweets=149):
+    print('Reading dataframe...')
+    data = pd.read_csv(data_path, lineterminator='\n')
     data['datetime'] = pd.to_datetime(data['datetime'])
     length = (data.shape[0]-1)
     latest_time = data['datetime'][length].date()
     now = datetime.now().date()
     difference = (now - latest_time).days
+    print(f'Days to update data by: {difference}')
 
     if difference > 0:
-        print('Updating!')
+        print(f'Updating data between {now} and {latest_time}')
         now = pd.Timestamp(now).isoformat('_', 'seconds')+'_UTC'
         latest_time = pd.Timestamp(latest_time).isoformat('_', 'seconds')+'_UTC'
 
         #scrape and process experts
-        #define a custom remove spam function fof experts
-        experts = get_usernames(file_csv='raw_data/Usernames - Sheet1.csv')
-        expert_df_updates = snscrape_expert(start_date=latest_time,end_date=None,filename=f'raw_data/experts_{latest_time}_{now}.csv',users_name=experts,make_csv=True)
+            #define a custom remove spam function fof experts
+        experts = get_usernames(file_csv='../../raw_data/expert_usernames_all.csv')
+        #need to change this to make a new file and not just amend the old one?
+        expert_df_updates = snscrape_expert(start_date=latest_time,end_date=None,filename=f'../../raw_data/experts_{now}_{latest_time}.csv',users_name=experts,make_csv=True)
         expert_df_updates = remove_spam(expert_df_updates)
         expert_df_updates = preprocess(expert_df_updates)
         expert_df_updates = run_model(expert_df_updates)
