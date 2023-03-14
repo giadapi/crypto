@@ -8,3 +8,5 @@ pandas
 yfinance
 scipy
 snscrape
+darts
+jupyter
