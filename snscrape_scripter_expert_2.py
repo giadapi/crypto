@@ -136,5 +136,5 @@ def snscrape_expert(start_date='2023-03-05T06:00:00.000Z',end_date='2023-03-06T0
 if __name__ == "__main__":
     experts = get_usernames(file_csv='raw_data/expert_users_remaining.csv')
     cuts = int(len(experts)/3)
-    experts = experts[0*cuts:1*cuts]
-    snscrape_expert(start_date='2021-01-01_06:00:00_UTC',end_date='2022-02-01_06:00:00_UTC',filename='raw_data/experts_suraj.csv',users_name=experts,make_csv=False)
+    experts = experts[1*cuts:2*cuts]
+    snscrape_expert(start_date='2021-01-01_06:00:00_UTC',end_date='2022-02-01_06:00:00_UTC',filename='raw_data/experts_peter.csv',users_name=experts,make_csv=False)

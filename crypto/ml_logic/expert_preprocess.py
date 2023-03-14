@@ -1,5 +1,7 @@
 import pandas as pd
 
+
+
 def filtering(df):
     key_words = [
     'Market',
@@ -22,6 +24,7 @@ def filtering(df):
     'dollar',
     'scaling',
     'scale']
+
 
     x= ''
     for i in key_words:
