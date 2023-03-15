@@ -27,7 +27,7 @@ st.markdown(
 )
 
 #Import the CSS file for website design format
-with open('style_main.css') as f:
+with open('style_page.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 # Background Image - Use image to control the background color
@@ -51,6 +51,12 @@ right: 2rem;
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
 #Input score from other files
+
+#Step 1 - load data & df
+
+#Step 2 - sort df
+
+
 #Overall Score
 sentiment_signal = "buy"
 sentiment_score = 0.678
@@ -190,5 +196,6 @@ with col_4c:
 st.markdown(f"<h5 style='text-align: center; margin-bottom: 40px; color:#4284CC; font-size: 20px; font-family: Open Sans Bold, sans-serif'> </h5>", unsafe_allow_html=True)
 
 #Button
-if st.button("Home Page"):
+col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
+if col4.button("Home"):
     switch_page("main")
