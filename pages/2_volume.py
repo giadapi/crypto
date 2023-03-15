@@ -130,5 +130,6 @@ with col_2b:
 st.markdown(f"<h5 style='text-align: center; margin-bottom: 40px; color:#4284CC; font-size: 20px; font-family: Open Sans Bold, sans-serif'> </h5>", unsafe_allow_html=True)
 
 #Button
-if st.button("Home Page"):
+col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
+if col4.button("Home"):
     switch_page("main")
