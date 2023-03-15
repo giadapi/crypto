@@ -49,6 +49,12 @@ with open('style_main.css') as f:
 # """
 # st.markdown(page_bg_img, unsafe_allow_html=True)
 
+"""
+For Data Downloading and Create Graphic
+"""
+
+
+
 #input score from other files
 main_score = 0.8
 sentiment_signal = "buy"
@@ -110,7 +116,7 @@ with col_b1:
         st.markdown(f"SELL")
 
     if st.button("Analysis Now 1"):
-        switch_page("sentiment")
+        switch_page("sentiment_suraj")
 
 #Margin
 st.markdown(f"<h5 style='text-align: center; margin-bottom: 16px; color:#4284CC; font-size: 16px; font-family: Open Sans Bold, sans-serif'> </h5>", unsafe_allow_html=True)
