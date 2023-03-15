@@ -8,10 +8,9 @@ pandas
 yfinance
 scipy
 snscrape
+streamlit-extras
+streamlit-card
 csv
-
 matplotlib.dates as md
-
 darts
 jupyter
-
