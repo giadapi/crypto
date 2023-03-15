@@ -8,3 +8,5 @@ pandas
 yfinance
 scipy
 snscrape
+streamlit-extras
+streamlit-card
