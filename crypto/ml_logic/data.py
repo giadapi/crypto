@@ -28,3 +28,20 @@ def load_historic_data(symbol, start_date_str, end_date_str, period, interval):
         return None
 
 #Part B - Download the twitter data from twitter API
+
+def update_prices(start_date,end_date,symbols=['BTC-USD']):
+    start_date_str = start_date.strftime("%Y-%m-%d")
+    end_date_str = end_date.strftime("%Y-%m-%d")
+    data = {}
+
+    for symbol in symbols:
+        print(f"Loading data for {symbol}")
+        # Save the cryto price into dataframe
+        data[symbol] = pd.DataFrame(load_historic_data(symbol, start_date_str, end_date_str, period, interval))
+        data[symbol]['price_change'] = data[symbol]['Close'].pct_change()
+
+        # Output to csv
+        file_name = f"{start_date_str}_{end_date_str}_{symbol}_{interval}.csv"
+        data[symbol].to_csv(f"~/code/giadapi/crypto/raw_data/{file_name}")
+
+    return data
