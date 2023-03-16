@@ -101,13 +101,9 @@ with col_b1:
     else:
         st.image("https://static.wixstatic.com/media/63fd61_2f1ddec84fd2427f86035f8ad0d54325~mv2.png")
 
-<<<<<<< HEAD
-    if st.button("Analysis Now 1"):
-        switch_page("sentiment_suraj")
-=======
+
     if st.button("Read More"):
         switch_page("sentiment")
->>>>>>> 7fcb50f296f10a1382612f6a98ce05779a168831
 
 #Margin
 st.markdown(f"<h5 style='text-align: center; margin-bottom: 16px; color:#4284CC; font-size: 16px; font-family: Open Sans Bold, sans-serif'> </h5>", unsafe_allow_html=True)
