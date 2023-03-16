@@ -49,6 +49,12 @@ right: 2rem;
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
+"""
+For Data Downloading and Create Graphic
+"""
+
+
+
 #input score from other files
 main_score = 0.8
 sentiment_signal = "buy"
@@ -94,6 +100,7 @@ with col_b1:
         st.image("https://static.wixstatic.com/media/63fd61_f32341a3d588440fb1bd2b2ff692e29e~mv2.png")
     else:
         st.image("https://static.wixstatic.com/media/63fd61_2f1ddec84fd2427f86035f8ad0d54325~mv2.png")
+
 
     if st.button("Read More"):
         switch_page("sentiment")
