@@ -33,10 +33,14 @@ div.css-13izhro.e1tzin5v0{
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
-div.css-1x8cf1d{
-  background-color: #000000;
-}
-
 /* div.css-1r6slb0.e1tzin5v2:nth-child(3){
   background-color: pink;
 } */
+
+/* Containers */
+[data-testid="stVerticalBlock"] > [style*="flex-direction: column;"] > [data-testid="stVerticalBlock"] {
+  background-color: #ffffff;
+  padding: 20% 20% 20% 20%;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
