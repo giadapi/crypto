@@ -18,9 +18,12 @@ def vol_signal(vol_data):
 def sentiment_buy(tweet_data,start_date=None,end_date=None):
     pos = tweet_data.columns.get_loc("positive_bert")
     tweet = tweet_data.columns.get_loc("text")
+    d = tweet_data.columns.get_loc("date")
     if start_date == None:
         start_date = datetime.date.today()
         start_date = start_date.strftime("%Y-%m-%d")
+        if start_date != tweet_data.iloc[-1:d]:
+            start_date = tweet_data.iloc[-1:d]
     start_date_index = tweet_data.index[tweet_data['date']==start_date].min()
     if end_date == None:
         temp = tweet_data.iloc[start_date_index:,:]
@@ -57,9 +60,12 @@ def sentiment_buy(tweet_data,start_date=None,end_date=None):
 def sentiment_sell(tweet_data,start_date=None,end_date=None):
     pos = tweet_data.columns.get_loc("negative_bert")
     tweet = tweet_data.columns.get_loc("text")
+    d = tweet_data.columns.get_loc("date")
     if start_date == None:
         start_date = datetime.date.today()
         start_date = start_date.strftime("%Y-%m-%d")
+        if start_date != tweet_data.iloc[-1:d]:
+            start_date = tweet_data.iloc[-1:d]
     start_date_index = tweet_data.index[tweet_data['date']==start_date].min()
     if end_date == None:
         temp = tweet_data.iloc[start_date_index:,:]
