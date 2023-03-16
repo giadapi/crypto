@@ -54,6 +54,6 @@ with col_1:
     if st.button("Start now"):
         switch_page("main")
     st.markdown(f"<h5 style='text-align: left; margin-top: 60px; color:#FFFFFF; font-size: 10px; font-family: Open Sans, sans-serif'> 2023 © - all rights reserved by CRYPTOBOT</h5>", unsafe_allow_html=True)
-    st.markdown(f"<h5 style='text-align: left; margin-top: 0px; color:#FFFFFF; font-size: 10px; font-family: Open Sans, sans-serif'> NO INVESTMENT ADVICE <br>The Content is for informational purposes only,<br> you should not construe any such information or other material as legal, tax, investment, financial, or other advice.</h5>", unsafe_allow_html=True)
+    st.markdown(f"<h5 style='text-align: left; margin-top: 0px; color:#FFFFFF; font-size: 10px; font-family: Open Sans, sans-serif'> NOT FINANCIAL ADVICE <br>The Content is for informational purposes only,<br> you should not construe any such information or other material as legal, tax, investment, financial, or other advice.</h5>", unsafe_allow_html=True)
 with col_2:
     st.image("https://static.wixstatic.com/media/63fd61_4cda0de329e04f15b1e26766d4d8a946~mv2.png")
