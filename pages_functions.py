@@ -15,6 +15,17 @@ def vol_signal(vol_data):
     volume_signal = vol_data.iloc[-1,vol]
     return volume_signal
 
+def vol_string_return(vol_data):
+    vol = vol_data.columns.get_loc("daily_tweets")
+    y = vol_data.iloc[-30:,vol].mean()
+    v_signal = vol_signal(vol_data)
+    if v_signal >= y:
+        return "high"
+    else:
+        return "low"
+
+
+
 def sentiment_buy(tweet_data,start_date=None,end_date=None):
     pos = tweet_data.columns.get_loc("positive_bert")
     tweet = tweet_data.columns.get_loc("text")
@@ -22,8 +33,8 @@ def sentiment_buy(tweet_data,start_date=None,end_date=None):
     if start_date == None:
         start_date = datetime.date.today()
         start_date = start_date.strftime("%Y-%m-%d")
-        if start_date != tweet_data.iloc[-1:d]:
-            start_date = tweet_data.iloc[-1:d]
+        if start_date != tweet_data.iloc[-1,d]:
+            start_date = tweet_data.iloc[-1,d]
     start_date_index = tweet_data.index[tweet_data['date']==start_date].min()
     if end_date == None:
         temp = tweet_data.iloc[start_date_index:,:]
@@ -36,9 +47,9 @@ def sentiment_buy(tweet_data,start_date=None,end_date=None):
         sentiment_buy_example_1 = tweet_data.iloc[max_1,tweet]
         sentiment_buy_example_2 = tweet_data.iloc[max_2,tweet]
         sentiment_buy_example_3 = tweet_data.iloc[max_3,tweet]
-        sentiment_buy_score_1 = tweet_data.iloc[max_1,pos]
-        sentiment_buy_score_2 = tweet_data.iloc[max_2,pos]
-        sentiment_buy_score_3 = tweet_data.iloc[max_3,pos]
+        sentiment_buy_score_1 = round(tweet_data.iloc[max_1,pos],3)
+        sentiment_buy_score_2 = round(tweet_data.iloc[max_2,pos],3)
+        sentiment_buy_score_3 = round(tweet_data.iloc[max_3,pos],3)
         return sentiment_buy_example_1,sentiment_buy_example_2,sentiment_buy_example_3,sentiment_buy_score_1,sentiment_buy_score_2,sentiment_buy_score_3
     else:
         end_date_index = tweet_data.index[tweet_data['date']==end_date].max()
@@ -52,9 +63,9 @@ def sentiment_buy(tweet_data,start_date=None,end_date=None):
         sentiment_buy_example_1 = tweet_data.iloc[max_1,tweet]
         sentiment_buy_example_2 = tweet_data.iloc[max_2,tweet]
         sentiment_buy_example_3 = tweet_data.iloc[max_3,tweet]
-        sentiment_buy_score_1 = tweet_data.iloc[max_1,pos]
-        sentiment_buy_score_2 = tweet_data.iloc[max_2,pos]
-        sentiment_buy_score_3 = tweet_data.iloc[max_3,pos]
+        sentiment_buy_score_1 = round(tweet_data.iloc[max_1,pos],3)
+        sentiment_buy_score_2 = round(tweet_data.iloc[max_2,pos],3)
+        sentiment_buy_score_3 = round(tweet_data.iloc[max_3,pos],3)
         return sentiment_buy_example_1,sentiment_buy_example_2,sentiment_buy_example_3,sentiment_buy_score_1,sentiment_buy_score_2,sentiment_buy_score_3
 
 def sentiment_sell(tweet_data,start_date=None,end_date=None):
@@ -64,8 +75,8 @@ def sentiment_sell(tweet_data,start_date=None,end_date=None):
     if start_date == None:
         start_date = datetime.date.today()
         start_date = start_date.strftime("%Y-%m-%d")
-        if start_date != tweet_data.iloc[-1:d]:
-            start_date = tweet_data.iloc[-1:d]
+        if start_date != tweet_data.iloc[-1,d]:
+            start_date = tweet_data.iloc[-1,d]
     start_date_index = tweet_data.index[tweet_data['date']==start_date].min()
     if end_date == None:
         temp = tweet_data.iloc[start_date_index:,:]
@@ -78,9 +89,9 @@ def sentiment_sell(tweet_data,start_date=None,end_date=None):
         sentiment_buy_example_1 = tweet_data.iloc[max_1,tweet]
         sentiment_buy_example_2 = tweet_data.iloc[max_2,tweet]
         sentiment_buy_example_3 = tweet_data.iloc[max_3,tweet]
-        sentiment_buy_score_1 = tweet_data.iloc[max_1,pos]
-        sentiment_buy_score_2 = tweet_data.iloc[max_2,pos]
-        sentiment_buy_score_3 = tweet_data.iloc[max_3,pos]
+        sentiment_buy_score_1 = round(tweet_data.iloc[max_1,pos],3)
+        sentiment_buy_score_2 = round(tweet_data.iloc[max_2,pos],3)
+        sentiment_buy_score_3 = round(tweet_data.iloc[max_3,pos],3)
         return sentiment_buy_example_1,sentiment_buy_example_2,sentiment_buy_example_3,sentiment_buy_score_1,sentiment_buy_score_2,sentiment_buy_score_3
     else:
         end_date_index = tweet_data.index[tweet_data['date']==end_date].max()
@@ -94,12 +105,12 @@ def sentiment_sell(tweet_data,start_date=None,end_date=None):
         sentiment_buy_example_1 = tweet_data.iloc[max_1,tweet]
         sentiment_buy_example_2 = tweet_data.iloc[max_2,tweet]
         sentiment_buy_example_3 = tweet_data.iloc[max_3,tweet]
-        sentiment_buy_score_1 = tweet_data.iloc[max_1,pos]
-        sentiment_buy_score_2 = tweet_data.iloc[max_2,pos]
-        sentiment_buy_score_3 = tweet_data.iloc[max_3,pos]
+        sentiment_buy_score_1 = round(tweet_data.iloc[max_1,pos],3)
+        sentiment_buy_score_2 = round(tweet_data.iloc[max_2,pos],3)
+        sentiment_buy_score_3 = round(tweet_data.iloc[max_3,pos],3)
         return sentiment_buy_example_1,sentiment_buy_example_2,sentiment_buy_example_3,sentiment_buy_score_1,sentiment_buy_score_2,sentiment_buy_score_3
 
-def volume_today_no_tweet(vol_data):
+def vol_today_no_tweet(vol_data):
     daily_tweets = vol_data.columns.get_loc("daily_tweets")
     volume_today_no_tweet = vol_data.iloc[-1,daily_tweets]
     return volume_today_no_tweet

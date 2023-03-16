@@ -1,8 +1,11 @@
 import streamlit as st
 import numpy as np
-
+import pandas as pd
 from streamlit_extras.switch_page_button import switch_page
 from streamlit_card import card
+from pages_functions import *
+# from 3_time import t_signal
+
 
 #Page overall setting
 #https://docs.streamlit.io/library/api-reference/utilities/st.set_page_config
@@ -49,16 +52,15 @@ right: 2rem;
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
-"""
-For Data Downloading and Create Graphic
-"""
-
 
 
 #input score from other files
-main_score = 0.8
-sentiment_signal = "buy"
-volume_signal = "buy"
+vol_data = pd.read_csv('training_data/complete_vol.csv',lineterminator='\n',index_col=0)
+# tweet_data = pd.read_csv('~/Code/giadapi/crypto/complete_tweet_2023-03-14.csv',lineterminator='\n',index_col=0)
+
+main_score = sent_score(vol_data)
+sentiment_signal = sent_rating(main_score)
+volume_signal = vol_string_return(vol_data)
 time_signal = "sell"
 
 with st.container():
@@ -103,7 +105,7 @@ with col_b1:
 
 
     if st.button("Read More"):
-        switch_page("sentiment")
+        switch_page("sentiment_copy")
 
 #Margin
 st.markdown(f"<h5 style='text-align: center; margin-bottom: 16px; color:#4284CC; font-size: 16px; font-family: Open Sans Bold, sans-serif'> </h5>", unsafe_allow_html=True)
@@ -115,15 +117,15 @@ with col_b2:
     st.markdown(f"<h5 style='text-align: left; color:#4284CC; font-size: 16px; font-family: Open Sans Bold, sans-serif'> Twitter Volume Analysis </h5>", unsafe_allow_html=True)
 
     #Label for Buy, Hold or Sell
-    if volume_signal == "buy":
+    if volume_signal == "high":
         st.image("https://static.wixstatic.com/media/63fd61_9c62560397124eaa8c320e49d4b76408~mv2.png")
-    elif volume_signal == "hold":
-        st.image("https://static.wixstatic.com/media/63fd61_f32341a3d588440fb1bd2b2ff692e29e~mv2.png")
+    # elif volume_signal == "hold":
+    #     st.image("https://static.wixstatic.com/media/63fd61_f32341a3d588440fb1bd2b2ff692e29e~mv2.png")
     else:
         st.image("https://static.wixstatic.com/media/63fd61_2f1ddec84fd2427f86035f8ad0d54325~mv2.png")
 
     if st.button("Read more "):
-        switch_page("volume")
+        switch_page("volume_copy")
 
     #Margin
     st.markdown(f"<h5 style='text-align: center; margin-bottom: 16px; color:#4284CC; font-size: 16px; font-family: Open Sans Bold, sans-serif'> </h5>", unsafe_allow_html=True)
