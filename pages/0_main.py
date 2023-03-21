@@ -105,7 +105,7 @@ with col_b1:
 
 
     if st.button("Read More"):
-        switch_page("sentiment_copy")
+        switch_page("sentiment")
 
 #Margin
 st.markdown(f"<h5 style='text-align: center; margin-bottom: 16px; color:#4284CC; font-size: 16px; font-family: Open Sans Bold, sans-serif'> </h5>", unsafe_allow_html=True)
@@ -125,7 +125,7 @@ with col_b2:
         st.image("https://static.wixstatic.com/media/63fd61_2f1ddec84fd2427f86035f8ad0d54325~mv2.png")
 
     if st.button("Read more "):
-        switch_page("volume_copy")
+        switch_page("volume")
 
     #Margin
     st.markdown(f"<h5 style='text-align: center; margin-bottom: 16px; color:#4284CC; font-size: 16px; font-family: Open Sans Bold, sans-serif'> </h5>", unsafe_allow_html=True)
