@@ -13,3 +13,4 @@ streamlit-extras
 streamlit-card
 darts
 jupyter
+seaborn
