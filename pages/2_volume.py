@@ -57,7 +57,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 #Input data / score from other files
 #Data Downloading, Processing and Visualising the Tweet Volume
-vol_data = pd.read_csv('training_data/complete_vol.csv',lineterminator='\n',index_col=0)
+vol_data = pd.read_csv('https://raw.githubusercontent.com/Endy-chow/crypto-project/mastertraining_data/complete_vol.csv',lineterminator='\n',index_col=0)
 vol_data['negative_bert'] = vol_data['negative_bert'] * vol_data['daily_tweets']
 vol_data['neutral_bert'] = vol_data['neutral_bert'] * vol_data['daily_tweets']
 vol_data['positive_bert'] = vol_data['positive_bert'] * vol_data['daily_tweets']
@@ -106,11 +106,11 @@ with col_1a:
 
     #Label for Buy, Hold or Sell
     if volume_signal == "buy":
-        st.markdown(f"<h5 style='text-align: center; margin-top: 0px;color:#FF914D; font-size: 50px; font-family: Oswald, sans-serif'> BUY </h5>", unsafe_allow_html=True)
+        st.markdown(f"<h5 style='text-align: center; margin-top: 0px;color:#FF914D; font-size: 30px; font-family: Oswald, sans-serif'> OPTIMISTIC </h5>", unsafe_allow_html=True)
     elif volume_signal == "hold":
-        st.markdown(f"<h5 style='text-align: center; margin-top: 10px;color:#737373; font-size: 50px; font-family: Oswald, sans-serif'> HOLD </h5>", unsafe_allow_html=True)
+        st.markdown(f"<h5 style='text-align: center; margin-top: 10px;color:#737373; font-size: 30px; font-family: Oswald, sans-serif'> HOLD </h5>", unsafe_allow_html=True)
     else:
-        st.markdown(f"<h5 style='text-align: center; margin-top: 10px;color:#4284CC; font-size: 50px; font-family: Oswald, sans-serif'> SELL </h5>", unsafe_allow_html=True)
+        st.markdown(f"<h5 style='text-align: center; margin-top: 10px;color:#4284CC; font-size: 30px; font-family: Oswald, sans-serif'> PESSIMISTIC </h5>", unsafe_allow_html=True)
 
 #Section 1b - Twitter volume Score of Today
 with col_1b:

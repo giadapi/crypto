@@ -59,8 +59,8 @@ right: 2rem;
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
-vol_data = pd.read_csv('training_data/complete_vol.csv',lineterminator='\n',index_col=0)
-tweet_data = pd.read_csv('training_data/complete_tweet.csv',lineterminator='\n',index_col=0)
+vol_data = pd.read_csv('https://raw.githubusercontent.com/Endy-chow/crypto-project/mastertraining_data/complete_vol.csv',lineterminator='\n',index_col=0)
+tweet_data = pd.read_csv('https://raw.githubusercontent.com/Endy-chow/crypto-project/master/training_data/complete_tweet.csv',lineterminator='\n',index_col=0)
 
 sentiment_score = round(sent_score(vol_data),3)
 sentiment_buy_example_1,sentiment_buy_example_2,sentiment_buy_example_3,sentiment_buy_example_score_1,sentiment_buy_example_score_2,sentiment_buy_example_score_3 = sentiment_buy(tweet_data,start_date=None,end_date=None)
@@ -109,11 +109,11 @@ with col_1a:
 
     #Label for Buy, Hold or Sell
     if sentiment_signal == "buy":
-        st.markdown(f"<h5 style='text-align: center; margin-top: 0px;color:#FF914D; font-size: 50px; font-family: Oswald, sans-serif'> BUY </h5>", unsafe_allow_html=True)
+        st.markdown(f"<h5 style='text-align: center; margin-top: 0px;color:#FF914D; font-size: 30px; font-family: Oswald, sans-serif'> OPTIMISTIC </h5>", unsafe_allow_html=True)
     elif sentiment_signal == "hold":
-        st.markdown(f"<h5 style='text-align: center; margin-top: 10px;color:#737373; font-size: 50px; font-family: Oswald, sans-serif'> HOLD </h5>", unsafe_allow_html=True)
+        st.markdown(f"<h5 style='text-align: center; margin-top: 10px;color:#737373; font-size: 30px; font-family: Oswald, sans-serif'> HOLD </h5>", unsafe_allow_html=True)
     else:
-        st.markdown(f"<h5 style='text-align: center; margin-top: 10px;color:#4284CC; font-size: 50px; font-family: Oswald, sans-serif'> SELL </h5>", unsafe_allow_html=True)
+        st.markdown(f"<h5 style='text-align: center; margin-top: 10px;color:#4284CC; font-size: 30px; font-family: Oswald, sans-serif'> PESSIMISTIC </h5>", unsafe_allow_html=True)
 
 #Section 1b - Twitter Sentiment Score of Today
 with col_1b:
