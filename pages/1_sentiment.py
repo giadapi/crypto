@@ -59,7 +59,7 @@ right: 2rem;
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
-vol_data = pd.read_csv('https://raw.githubusercontent.com/Endy-chow/crypto-project/mastertraining_data/complete_vol.csv',lineterminator='\n',index_col=0)
+vol_data = pd.read_csv('https://raw.githubusercontent.com/Endy-chow/crypto-project/master/training_data/complete_vol.csv',lineterminator='\n',index_col=0)
 tweet_data = pd.read_csv('https://raw.githubusercontent.com/Endy-chow/crypto-project/master/training_data/complete_tweet.csv',lineterminator='\n',index_col=0)
 
 sentiment_score = round(sent_score(vol_data),3)
