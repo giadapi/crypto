@@ -11,5 +11,4 @@ snscrape
 streamlit
 streamlit-extras
 streamlit-card
-darts
 jupyter
