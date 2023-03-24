@@ -6,11 +6,10 @@
 
 ### Demo :thumbsup:
 ![Alt text](streamlit_pics/streamlit1.png)
-![Alt text](assets/images/Demo2.png)
-![Alt text](assets/images/Demo7.png)
-![Alt text](assets/images/Demo8.png)
-![Alt text](assets/images/Demo9.gif)
-![Alt text](assets/images/Demo3.png)
-![Alt text](assets/images/Demo4.png)
-![Alt text](assets/images/Demo5.png)
-![Alt text](assets/images/Demo6.png)
+![Alt text](streamlit_pics/streamlit2.png)
+![Alt text](streamlit_pics/streamlit3.png)
+![Alt text](streamlit_pics/streamlit4.png)
+![Alt text](streamlit_pics/streamlit5.png)
+![Alt text](streamlit_pics/streamlit6.png)
+![Alt text](streamlit_pics/streamlit7.png)
+![Alt text](streamlit_pics/streamlit8.png)
