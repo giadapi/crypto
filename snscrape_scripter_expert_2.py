@@ -98,7 +98,7 @@ def get_usernames(file_csv='../../raw_data/Usernames - Sheet1.csv'):
 
 
 
-def snscrape_expert(start_date='2023-03-05T06:00:00.000Z',end_date='2023-03-06T06:00:00.000Z',filename='../../raw_data/experts_2.csv',users_name=['ElonMusk'],make_csv=True):
+def snscrape_expert(start_date='2021-01-01T06:00:00.000Z',end_date='2023-04-04T06:00:00.000Z',filename='../../raw_data/010122_040423.csv',users_name=['ElonMusk'],make_csv=True):
 
     # Creating list to append tweet data to
 #     start_list, end_list = timedeltas2(start=start_date,end=end_date,hour_delta=hour_delta,min_gap=min_gap)
@@ -134,7 +134,7 @@ def snscrape_expert(start_date='2023-03-05T06:00:00.000Z',end_date='2023-03-06T0
         return
 
 if __name__ == "__main__":
-    experts = get_usernames(file_csv='raw_data/expert_users_remaining.csv')
-    cuts = int(len(experts)/3)
-    experts = experts[1*cuts:2*cuts]
-    snscrape_expert(start_date='2021-01-01_06:00:00_UTC',end_date='2022-02-01_06:00:00_UTC',filename='raw_data/experts_peter.csv',users_name=experts,make_csv=False)
+    experts = get_usernames(file_csv='raw_data/104_expert_users.csv')
+    cuts = int(len(experts)/2)
+    experts = experts[:cuts]
+    snscrape_expert(start_date='2021-01-01_06:00:00_UTC',end_date='2023-04-04_06:00:00_UTC',filename='raw_data/010122_040423_all104experts.csv',users_name=experts,make_csv=False)
