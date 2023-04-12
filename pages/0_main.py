@@ -55,7 +55,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 
 #input score from other files
-vol_data = pd.read_csv('https://raw.githubusercontent.com/Endy-chow/crypto-project/mastertraining_data/complete_vol.csv',lineterminator='\n',index_col=0)
+vol_data = pd.read_csv('https://raw.githubusercontent.com/Endy-chow/crypto-project/master/training_data/complete_vol.csv',lineterminator='\n',index_col=0)
 # tweet_data = pd.read_csv('~/Code/giadapi/crypto/complete_tweet_2023-03-14.csv',lineterminator='\n',index_col=0)
 
 main_score = sent_score(vol_data)

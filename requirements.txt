@@ -12,3 +12,4 @@ streamlit
 streamlit-extras
 streamlit-card
 jupyter
+seaborn

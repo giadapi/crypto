@@ -57,7 +57,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 #Input data / score from other files
 #Data Downloading, Processing and Visualising the Tweet Volume
-vol_data = pd.read_csv('https://raw.githubusercontent.com/Endy-chow/crypto-project/mastertraining_data/complete_vol.csv',lineterminator='\n',index_col=0)
+vol_data = pd.read_csv('https://raw.githubusercontent.com/Endy-chow/crypto-project/master/training_data/complete_vol.csv',lineterminator='\n',index_col=0)
 vol_data['negative_bert'] = vol_data['negative_bert'] * vol_data['daily_tweets']
 vol_data['neutral_bert'] = vol_data['neutral_bert'] * vol_data['daily_tweets']
 vol_data['positive_bert'] = vol_data['positive_bert'] * vol_data['daily_tweets']
